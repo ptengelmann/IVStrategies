@@ -11,25 +11,28 @@ export default function RestaurantTycoon3Strategy() {
   // Technical Integration Data
   const technicalSolutions = [
     {
-      phase: "Phase 1: Shopify Store Foundation",
-      status: "Immediate Implementation",
+      phase: "Phase 1: Shopify Store Foundation (RECOMMENDED)",
+      status: "Ready to Launch",
       solution: "IV Creative End-to-End Solution",
-      details: "IV Creative handles all personalisation, print-on-demand production, and fulfilment. Full-service solution covering design, printing, packaging, warehousing, and global distribution. Zero inventory required for Restaurant Tycoon 3.",
-      timeline: "2-4 weeks setup with IV Creative"
+      details: "IV Creative handles all personalisation, print-on-demand production, and fulfilment. Full-service solution covering design, printing, packaging, warehousing, and global distribution. Zero inventory required. Standard e-commerce marketing to RT3 community via social media.",
+      timeline: "2-4 weeks setup",
+      requirements: "None - IV Creative has all capabilities in-house"
     },
     {
-      phase: "Phase 2: Roblox Integration",
-      status: "Advanced Implementation",
+      phase: "Phase 2: Roblox In-Game Integration (Future Possibility)",
+      status: "Requires Partnerships",
       solution: "Roblox Commerce API + Shopify",
-      details: "Leverage Roblox's official Shopify integration (launched May 2025). Players purchase physical items directly within Restaurant Tycoon 3.",
-      timeline: "Requires Roblox Approved Merchandiser Programme application"
+      details: "Official Roblox-Shopify integration enabling in-game purchases. Proven successful (Twin Atlas: six-figure revenue). However, this requires approval from both Roblox and Restaurant Tycoon 3 developer (Ultraw Games).",
+      timeline: "3-6 months if approved",
+      requirements: "Partnership with Ultraw Games + Roblox AMP approval + Custom development + Revenue share agreements"
     },
     {
-      phase: "Requirement: Player Authentication",
-      status: "Technical Solution",
-      solution: "Roblox OAuth + Shopify Customer Accounts",
-      details: "Players link their Roblox account to Shopify account. Delivery address captured during Shopify checkout process.",
-      timeline: "Built into Phase 2 integration"
+      phase: "Phase 3: 3D Restaurant Model Exports (Long-Term Possibility)",
+      status: "Requires Developer Cooperation",
+      solution: "Custom 3D Model Export System",
+      details: "Physical 3D-printed replicas of players' in-game restaurants. Requires deep integration with game code to export player data. High production cost and complexity.",
+      timeline: "6-12+ months if feasible",
+      requirements: "Full partnership with Ultraw Games + Access to game data/APIs + 3D printing partner + Complex pricing system + Extended production timelines"
     }
   ];
 
@@ -257,20 +260,23 @@ export default function RestaurantTycoon3Strategy() {
       content: (
         <>
           <Card className="mt-4">
-            <h3 className="text-base font-bold mb-4">Roblox-Shopify Integration: Official Solution</h3>
+            <h3 className="text-base font-bold mb-4">Phased Approach: Immediate Launch to Future Possibilities</h3>
             <div className="text-sm leading-relaxed mb-4">
-              <strong className="text-[#2dffb5]">Excellent news:</strong> Roblox officially launched Shopify integration
-              in May 2025 through their Commerce APIs. This makes your vision technically feasible and officially supported.
+              <strong className="text-[#2dffb5]">Recommended Strategy:</strong> Launch immediately with Phase 1 (IV Creative's proven e-commerce solution) to establish revenue and community engagement. Phases 2-3 are technically possible but require partnerships with game developer and Roblox approval.
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
               <div className="bg-[#2dffb5]/10 p-3 rounded-lg border-l-[3px] border-[#2dffb5]">
-                <div className="text-xs font-bold text-[#2dffb5] mb-1">✓ OFFICIAL SUPPORT</div>
-                <div className="text-xs">Roblox Commerce API + Shopify partnership launched May 2025</div>
+                <div className="text-xs font-bold text-[#2dffb5] mb-1">✓ PHASE 1: READY NOW</div>
+                <div className="text-xs">IV Creative end-to-end solution. Launch in 2-4 weeks with zero dependencies.</div>
               </div>
-              <div className="bg-[#2dffb5]/10 p-3 rounded-lg border-l-[3px] border-[#2dffb5]">
-                <div className="text-xs font-bold text-[#2dffb5] mb-1">✓ PROVEN SUCCESS</div>
-                <div className="text-xs">Twin Atlas studio: six-figure revenue in first few weeks</div>
+              <div className="bg-[#ff2d9b]/10 p-3 rounded-lg border-l-[3px] border-[#ff2d9b]">
+                <div className="text-xs font-bold text-[#ff2d9b] mb-1">⚠ PHASE 2: NEEDS APPROVAL</div>
+                <div className="text-xs">Roblox integration possible but requires Ultraw Games partnership + Roblox AMP approval</div>
+              </div>
+              <div className="bg-[#8a8a8a]/10 p-3 rounded-lg border-l-[3px] border-[#8a8a8a]">
+                <div className="text-xs font-bold text-[#8a8a8a] mb-1">? PHASE 3: LONG-TERM</div>
+                <div className="text-xs">3D models require deep developer cooperation. Complex and high-cost.</div>
               </div>
             </div>
 
@@ -278,12 +284,18 @@ export default function RestaurantTycoon3Strategy() {
               <div
                 key={idx}
                 className={`${
-                  idx % 2 === 0 ? 'bg-white/[0.02]' : 'bg-transparent'
-                } p-4 rounded-lg mb-3 border-l-[3px] border-[#ff2d9b]`}
+                  idx === 0 ? 'bg-[#2dffb5]/5 border-[#2dffb5]' : 'bg-white/[0.02] border-[#ff2d9b]'
+                } p-4 rounded-lg mb-3 border-l-[3px]`}
               >
                 <div className="flex items-start justify-between mb-2">
-                  <div className="text-sm font-bold text-[#ff2d9b]">{solution.phase}</div>
-                  <span className="text-[10px] bg-[#ff2d9b]/10 text-[#ff2d9b] px-2 py-1 rounded-full font-semibold">
+                  <div className={`text-sm font-bold ${idx === 0 ? 'text-[#2dffb5]' : 'text-[#ff2d9b]'}`}>
+                    {solution.phase}
+                  </div>
+                  <span className={`text-[10px] px-2 py-1 rounded-full font-semibold ${
+                    idx === 0
+                      ? 'bg-[#2dffb5]/20 text-[#2dffb5]'
+                      : 'bg-[#ff2d9b]/10 text-[#ff2d9b]'
+                  }`}>
                     {solution.status}
                   </span>
                 </div>
@@ -293,8 +305,13 @@ export default function RestaurantTycoon3Strategy() {
                 <div className="text-xs leading-relaxed mb-2 text-[#8a8a8a]">
                   {solution.details}
                 </div>
-                <div className="text-[11px] text-[#2dffb5]">
-                  <strong>Timeline:</strong> {solution.timeline}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-3">
+                  <div className="text-[11px] bg-white/[0.02] p-2 rounded">
+                    <strong className="text-[#2dffb5]">Timeline:</strong> {solution.timeline}
+                  </div>
+                  <div className="text-[11px] bg-white/[0.02] p-2 rounded">
+                    <strong className={idx === 0 ? 'text-[#2dffb5]' : 'text-[#ff2d9b]'}>Requirements:</strong> {solution.requirements}
+                  </div>
                 </div>
               </div>
             ))}
@@ -611,13 +628,19 @@ export default function RestaurantTycoon3Strategy() {
 
       {/* Bottom Summary */}
       <Card variant="success" className="mt-6">
-        <div className="text-[13px] leading-relaxed">
-          <strong>Strategic Recommendation:</strong> Begin with Phase 1 (automated Shopify + print-on-demand) to establish
-          revenue and community engagement immediately, whilst simultaneously applying for Roblox's Approved Merchandiser Programme.
-          The official Roblox-Shopify integration launched in May 2025 makes the client's vision of in-game physical product
-          purchasing technically feasible and officially supported. Early adopters like Twin Atlas have demonstrated six-figure
-          revenue potential within weeks. The combination of 112M+ game visits, active community engagement, and 8 highly
-          personalised product concepts creates significant opportunity for Restaurant Tycoon 3 merchandise success.
+        <div className="text-[13px] leading-relaxed space-y-3">
+          <div>
+            <strong>Strategic Recommendation:</strong> Launch immediately with <strong>Phase 1</strong> – IV Creative's full-service print-on-demand solution. This requires zero partnerships, has no approval barriers, and can generate revenue within 2-4 weeks. Marketing to Restaurant Tycoon 3's 112M+ player community via social media (Discord, X, Instagram, TikTok) provides immediate reach.
+          </div>
+          <div>
+            <strong>Phase 2 (Roblox Integration):</strong> Whilst technically possible (Roblox Commerce API launched May 2025), this requires partnership with Ultraw Games (RT3 developer) + Roblox Approved Merchandiser Programme approval. <span className="text-[#ff2d9b]">Recommend pursuing only after Phase 1 demonstrates market demand.</span> Use early sales data to approach Ultraw with partnership proposal.
+          </div>
+          <div>
+            <strong>Phase 3 (3D Models):</strong> Long-term possibility requiring deep developer cooperation and complex technical integration. <span className="text-[#8a8a8a]">Consider only if Phases 1-2 prove highly successful.</span>
+          </div>
+          <div className="text-xs italic text-[#8a8a8a] pt-2 border-t border-white/10">
+            <strong>Honest Assessment:</strong> IV Creative can deliver Phase 1 immediately with proven capabilities (7,500+ projects, major brand clients). Phases 2-3 are aspirational opportunities requiring external partnerships beyond IV Creative's direct control.
+          </div>
         </div>
       </Card>
 
