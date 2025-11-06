@@ -55,7 +55,7 @@ export default function RestaurantTycoon3Strategy() {
       "Selects personalised product and customises options",
       "Clicks purchase - redirected to secure Shopify checkout",
       "Enters/confirms delivery address in Shopify",
-      "Payment processed - order automatically sent to Printful/Printify",
+      "Payment processed - order automatically sent to IV Creative",
       "Physical product manufactured and shipped to player's address"
     ]
   };
@@ -63,27 +63,11 @@ export default function RestaurantTycoon3Strategy() {
   // Personalised Product Ideas
   const productIdeas = [
     {
-      product: "Personalised LED Lightbox",
-      description: "Custom illuminated display featuring player's restaurant name, logo, or in-game achievement",
-      personalisation: "Restaurant name, player username, custom RGB colour selection, achievement milestones",
-      appeal: "Premium desk/shelf display, Instagram-worthy, showcases player's Restaurant Tycoon 3 identity",
-      supplier: "Available via Printway.io, PK Green, UNIQCUBE",
-      priceRange: "£35-£65"
-    },
-    {
-      product: "3D Printed Restaurant Models",
-      description: "Miniature physical replica of player's in-game restaurant design",
-      personalisation: "Exact 3D model export from game, custom colour schemes, player name engraved on base",
-      appeal: "Unique collectible, tangible representation of hours of gameplay, display piece",
-      supplier: "Custom 3D printing service integration required",
-      priceRange: "£45-£120 (depending on complexity)"
-    },
-    {
       product: "Personalised Chef Apron",
       description: "Premium apron featuring player's restaurant branding and in-game chef character",
       personalisation: "Restaurant logo, player username, custom text ('Head Chef of [Restaurant Name]'), character artwork",
       appeal: "Wearable merch, practical item, great for cooking content creators",
-      supplier: "Printful, Printify",
+      supplier: "IV Creative",
       priceRange: "£22-£32"
     },
     {
@@ -91,7 +75,7 @@ export default function RestaurantTycoon3Strategy() {
       description: "Framed replica of player's in-game menu with bestselling dishes",
       personalisation: "Player's menu items, restaurant name, custom design matching in-game aesthetic",
       appeal: "Kitchen/dining room decor, nostalgic keepsake, conversation starter",
-      supplier: "Printful (posters), custom framing options",
+      supplier: "IV Creative (posters and custom framing)",
       priceRange: "£18-£40"
     },
     {
@@ -99,31 +83,15 @@ export default function RestaurantTycoon3Strategy() {
       description: "'Executive Chef' mug featuring player stats, restaurant milestones, or character art",
       personalisation: "Player username, restaurant name, achievement badges, total customers served stat",
       appeal: "Daily use item, affordable entry point, collectible series potential",
-      supplier: "Printful, Printify (both offer ceramic mugs)",
+      supplier: "IV Creative",
       priceRange: "£12-£18"
-    },
-    {
-      product: "Embroidered Staff Uniform Hoodie",
-      description: "Premium hoodie with 'Restaurant Tycoon 3 Staff' branding and player's restaurant name",
-      personalisation: "Restaurant name embroidered, player role (Owner, Head Chef, Manager), custom colour options",
-      appeal: "High-quality wearable, community identity, suitable for events/meetups",
-      supplier: "Printful (premium embroidery options)",
-      priceRange: "£35-£50"
-    },
-    {
-      product: "Acrylic Standee Character Display",
-      description: "Premium acrylic standee of player's in-game chef character or mascot",
-      personalisation: "Custom character design, player name, transparent or coloured acrylic options",
-      appeal: "Anime-style collectible format, desk display, popular in gaming communities",
-      supplier: "Vograce, custom acrylic suppliers via Alibaba",
-      priceRange: "£15-£28"
     },
     {
       product: "Personalised Cutting Board",
       description: "Bamboo cutting board laser-engraved with restaurant branding",
       personalisation: "Restaurant logo, 'From the kitchen of [Player Name]', custom recipe engraving",
       appeal: "Practical kitchen item, premium feel, gift-worthy",
-      supplier: "Printful, CustomCat",
+      supplier: "IV Creative",
       priceRange: "£25-£38"
     }
   ];
@@ -211,8 +179,8 @@ export default function RestaurantTycoon3Strategy() {
       phase: "Phase 1A: Foundation (Weeks 1-4)",
       actions: [
         "Set up Shopify store with professional branding",
-        "Integrate Printful/Printify for automated fulfilment",
-        "Launch with 3-4 core products (lightbox, mugs, hoodies)",
+        "Integrate IV Creative for automated fulfilment",
+        "Launch with 4 core products (apron, menu board, mugs, cutting board)",
         "Create social media accounts and announce merch store",
         "Set up email marketing automation"
       ],
@@ -373,7 +341,7 @@ export default function RestaurantTycoon3Strategy() {
       content: (
         <>
           <Card className="mt-4 mb-4">
-            <h3 className="text-base font-bold mb-3">8 Highly Personalised Product Concepts</h3>
+            <h3 className="text-base font-bold mb-3">4 Personalised Product Concepts</h3>
             <div className="text-sm leading-relaxed text-[#8a8a8a] mb-3">
               Each product designed for maximum personalisation, leveraging Restaurant Tycoon 3's unique in-game elements
               and player identity. Prices shown in GBP for UK market.
@@ -589,7 +557,7 @@ export default function RestaurantTycoon3Strategy() {
                 <div className="font-bold mb-2 text-[#2dffb5]">Immediate (Phase 1):</div>
                 <ul className="pl-4 list-disc leading-loose">
                   <li>Shopify store (£25/month minimum)</li>
-                  <li>Printful/Printify account (free)</li>
+                  <li>IV Creative fulfilment setup</li>
                   <li>Domain name (£10/year)</li>
                   <li>Initial product mockup designs</li>
                 </ul>
