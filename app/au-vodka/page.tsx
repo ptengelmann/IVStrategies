@@ -1,6 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { Tabs, Tab } from '@/components/Tabs';
@@ -8,6 +10,35 @@ import { Card } from '@/components/Card';
 import { SparklesIcon, PlaneIcon } from '@/components/icons';
 
 export default function AUVodkaStrategy() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  // Check if user has access to this project
+  useEffect(() => {
+    if (status === 'authenticated') {
+      const clientId = session?.user?.id || '';
+      const allowedClients = ['au-vodka', 'admin'];
+
+      if (!allowedClients.includes(clientId)) {
+        // Redirect to home if client doesn't have access
+        router.push('/');
+      }
+    }
+  }, [status, session, router]);
+
+  // Show loading while checking authentication
+  if (status === 'loading') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center">
+        <div className="text-white text-lg">Loading...</div>
+      </div>
+    );
+  }
+
+  // Don't render if not authenticated
+  if (!session) {
+    return null;
+  }
   // AU Vodka Key Markets
   const keyMarkets = [
     {

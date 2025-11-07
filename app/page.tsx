@@ -1,6 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Card } from '@/components/Card';
 import { Header } from '@/components/Header';
@@ -23,10 +25,36 @@ interface Project {
   tag: TagType;
   icon: React.ReactNode;
   date: string;
+  allowedClients: string[]; // Client IDs who can access this project
 }
 
 export default function Home() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
   const [activeFilter, setActiveFilter] = useState<TagType>('All');
+
+  // Redirect to login if not authenticated
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push('/login');
+    }
+  }, [status, router]);
+
+  // Show loading state while checking authentication
+  if (status === 'loading') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center">
+        <div className="text-white text-lg">Loading...</div>
+      </div>
+    );
+  }
+
+  // Don't render content if not authenticated
+  if (!session) {
+    return null;
+  }
+
+  const clientId = session.user?.id || '';
 
   const projects: Project[] = [
     {
@@ -35,7 +63,8 @@ export default function Home() {
       href: '/restaurant-tycoon-3',
       tag: 'Merchandise',
       icon: <ShoppingBagIcon size={24} />,
-      date: '2025-11-04'
+      date: '2025-11-04',
+      allowedClients: ['restaurant-tycoon', 'admin'] // Only Restaurant Tycoon client and admin can see this
     },
     {
       title: 'AU Vodka Personalisation Strategy',
@@ -43,41 +72,47 @@ export default function Home() {
       href: '/au-vodka',
       tag: 'Proposal',
       icon: <GlobeIcon size={24} />,
-      date: '2025-11-03'
+      date: '2025-11-03',
+      allowedClients: ['au-vodka', 'admin'] // Only AU Vodka client and admin can see this
     },
     // Add more projects here as you create them
   ];
+
+  // Filter projects based on client permissions
+  const clientProjects = projects.filter(project =>
+    project.allowedClients.includes(clientId)
+  );
 
   const tags: { name: TagType; icon: React.ReactNode; color: string; count: number }[] = [
     {
       name: 'All',
       icon: <FilterIcon size={16} />,
       color: 'text-white',
-      count: projects.length
+      count: clientProjects.length
     },
     {
       name: 'Merchandise',
       icon: <ShoppingBagIcon size={16} />,
       color: 'text-[#ff2d9b]',
-      count: projects.filter(p => p.tag === 'Merchandise').length
+      count: clientProjects.filter(p => p.tag === 'Merchandise').length
     },
     {
       name: 'Proposal',
       icon: <FileTextIcon size={16} />,
       color: 'text-[#2dffb5]',
-      count: projects.filter(p => p.tag === 'Proposal').length
+      count: clientProjects.filter(p => p.tag === 'Proposal').length
     },
     {
       name: 'Internal',
       icon: <BriefcaseIcon size={16} />,
       color: 'text-[#8a8a8a]',
-      count: projects.filter(p => p.tag === 'Internal').length
+      count: clientProjects.filter(p => p.tag === 'Internal').length
     },
   ];
 
   const filteredProjects = activeFilter === 'All'
-    ? projects
-    : projects.filter(project => project.tag === activeFilter);
+    ? clientProjects
+    : clientProjects.filter(project => project.tag === activeFilter);
 
   const getTagColor = (tag: TagType) => {
     switch(tag) {
@@ -208,7 +243,7 @@ export default function Home() {
               <TrendingUpIcon className="text-[#ff2d9b]" size={24} />
             </div>
             <div>
-              <div className="text-2xl font-bold text-white">{projects.length}</div>
+              <div className="text-2xl font-bold text-white">{clientProjects.length}</div>
               <div className="text-xs text-[#8a8a8a]">Active Projects</div>
             </div>
           </div>
