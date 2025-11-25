@@ -264,3 +264,54 @@ export const FilterIcon: React.FC<IconProps> = ({ className, size = 18 }) => (
     <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
   </svg>
 );
+
+export const ClipboardListIcon: React.FC<IconProps> = ({ className, size = 18 }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    width={size}
+    height={size}
+    className={className}
+  >
+    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+    <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+    <line x1="8" y1="10" x2="8" y2="10" />
+    <line x1="12" y1="10" x2="16" y2="10" />
+    <line x1="8" y1="14" x2="8" y2="14" />
+    <line x1="12" y1="14" x2="16" y2="14" />
+    <line x1="8" y1="18" x2="8" y2="18" />
+    <line x1="12" y1="18" x2="16" y2="18" />
+  </svg>
+);
+
+export const SendIcon: React.FC<IconProps> = ({ className, size = 18 }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    width={size}
+    height={size}
+    className={className}
+  >
+    <line x1="22" y1="2" x2="11" y2="13" />
+    <polygon points="22 2 15 22 11 13 2 9 22 2" />
+  </svg>
+);
+
+export const CheckCircleIcon: React.FC<IconProps> = ({ className, size = 18 }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    width={size}
+    height={size}
+    className={className}
+  >
+    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+    <polyline points="22 4 12 14.01 9 11.01" />
+  </svg>
+);

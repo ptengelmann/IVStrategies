@@ -13,10 +13,11 @@ import {
   ShoppingBagIcon,
   FileTextIcon,
   BriefcaseIcon,
-  FilterIcon
+  FilterIcon,
+  ClipboardListIcon
 } from '@/components/icons';
 
-type TagType = 'All' | 'Merchandise' | 'Proposal' | 'Internal';
+type TagType = 'All' | 'Merchandise' | 'Proposal' | 'Internal' | 'Briefing';
 
 interface Project {
   title: string;
@@ -117,6 +118,12 @@ export default function Home() {
       color: 'text-[#8a8a8a]',
       count: clientProjects.filter(p => p.tag === 'Internal').length
     },
+    {
+      name: 'Briefing',
+      icon: <ClipboardListIcon size={16} />,
+      color: 'text-[#ff2d9b]',
+      count: clientProjects.filter(p => p.tag === 'Briefing').length
+    },
   ];
 
   const filteredProjects = activeFilter === 'All'
@@ -128,6 +135,7 @@ export default function Home() {
       case 'Merchandise': return 'bg-[#ff2d9b]/10 text-[#ff2d9b] border-[#ff2d9b]/20';
       case 'Proposal': return 'bg-[#2dffb5]/10 text-[#2dffb5] border-[#2dffb5]/20';
       case 'Internal': return 'bg-[#8a8a8a]/10 text-[#8a8a8a] border-[#8a8a8a]/20';
+      case 'Briefing': return 'bg-[#ff2d9b]/10 text-[#ff2d9b] border-[#ff2d9b]/20';
       default: return 'bg-white/10 text-white border-white/20';
     }
   };
@@ -298,7 +306,7 @@ export default function Home() {
                 This research hub showcases strategic insights and innovative concepts with interactive visualisations.
                 Each project includes comprehensive analysis, market data, and actionable recommendations.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4 text-xs">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-3 mt-4 text-xs">
                 <div className="bg-white/[0.02] p-3 rounded-lg">
                   <div className="text-[#ff2d9b] font-bold mb-1">Merchandise</div>
                   <div>Product strategies & e-commerce solutions</div>
@@ -310,6 +318,10 @@ export default function Home() {
                 <div className="bg-white/[0.02] p-3 rounded-lg">
                   <div className="text-[#8a8a8a] font-bold mb-1">Internal</div>
                   <div>Research & development projects</div>
+                </div>
+                <div className="bg-white/[0.02] p-3 rounded-lg">
+                  <div className="text-[#ff2d9b] font-bold mb-1">Briefing</div>
+                  <div>Project briefing questionnaires</div>
                 </div>
               </div>
             </div>
