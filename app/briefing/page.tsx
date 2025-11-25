@@ -20,6 +20,7 @@ interface FormData {
 
   // Project Type
   projectType: string;
+  numberOfWebsites: string;
   hasExistingWebsite: string;
   existingWebsiteUrl: string;
 
@@ -59,6 +60,7 @@ const initialFormData: FormData = {
   email: '',
   phone: '',
   projectType: '',
+  numberOfWebsites: '1',
   hasExistingWebsite: '',
   existingWebsiteUrl: '',
   primaryGoal: '',
@@ -339,16 +341,45 @@ export default function BriefingPage() {
                   </div>
                 </div>
 
+                <div>
+                  <label className="block text-sm font-medium text-white mb-3">How many websites is this project for?</label>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    {['1', '2', '3', '4+'].map((num) => (
+                      <label
+                        key={num}
+                        className={`text-center p-4 rounded-lg border cursor-pointer transition-all ${
+                          formData.numberOfWebsites === num
+                            ? 'bg-[#ff2d9b]/20 border-[#ff2d9b]'
+                            : 'bg-white/5 border-white/10 hover:border-white/20'
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          name="numberOfWebsites"
+                          value={num}
+                          checked={formData.numberOfWebsites === num}
+                          onChange={handleInputChange}
+                          className="sr-only"
+                        />
+                        <span className="text-white font-medium">{num}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
                 {formData.hasExistingWebsite === 'yes' && (
                   <div>
-                    <label className="block text-sm font-medium text-white mb-2">Current Website URL</label>
-                    <input
-                      type="url"
+                    <label className="block text-sm font-medium text-white mb-2">
+                      Current Website URL(s)
+                      <span className="text-[#8a8a8a] font-normal ml-2">- one per line if multiple</span>
+                    </label>
+                    <textarea
                       name="existingWebsiteUrl"
                       value={formData.existingWebsiteUrl}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-[#8a8a8a] focus:outline-none focus:border-[#ff2d9b] transition-colors"
-                      placeholder="https://www.example.com"
+                      rows={3}
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-[#8a8a8a] focus:outline-none focus:border-[#ff2d9b] transition-colors resize-none"
+                      placeholder="https://www.example1.com&#10;https://www.example2.com&#10;https://www.example3.com"
                     />
                   </div>
                 )}

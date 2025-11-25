@@ -9,6 +9,7 @@ interface BriefingData {
   email: string;
   phone: string;
   projectType: string;
+  numberOfWebsites: string;
   hasExistingWebsite: string;
   existingWebsiteUrl: string;
   primaryGoal: string;
@@ -122,8 +123,9 @@ function formatEmailHtml(data: BriefingData): string {
   <div class="section">
     <h2>Project Type</h2>
     <div class="field"><span class="label">Type:</span> <span class="value">${projectTypeLabels[data.projectType] || data.projectType}</span></div>
+    <div class="field"><span class="label">Number of Websites:</span> <span class="value" style="font-weight: bold; color: #ff2d9b;">${data.numberOfWebsites || '1'}</span></div>
     <div class="field"><span class="label">Has Existing Website:</span> <span class="value">${data.hasExistingWebsite === 'yes' ? 'Yes' : 'No'}</span></div>
-    ${data.existingWebsiteUrl ? `<div class="field"><span class="label">Current URL:</span> <span class="value"><a href="${data.existingWebsiteUrl}">${data.existingWebsiteUrl}</a></span></div>` : ''}
+    ${data.existingWebsiteUrl ? `<div class="field"><span class="label">Current URL(s):</span><br><span class="value" style="white-space: pre-line;">${data.existingWebsiteUrl}</span></div>` : ''}
   </div>
 
   <div class="section">
