@@ -16,6 +16,12 @@ const clients = [
     password: "tycoon2024", // Change this!
   },
   {
+    id: "timeless-treatments",
+    name: "Timeless Treatments",
+    email: "client@timeless-treatments.co.uk",
+    password: "timeless2024", // Change this!
+  },
+  {
     id: "admin",
     name: "IV Strategies Admin",
     email: "admin@ivstrategies.com",

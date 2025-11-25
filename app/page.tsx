@@ -58,6 +58,15 @@ export default function Home() {
 
   const projects: Project[] = [
     {
+      title: 'Timeless Treatments Digital Marketing Strategy',
+      description: 'SEO & Social Media strategy for pre-launch buzz and growth to £30k/month revenue',
+      href: '/timeless-treatments',
+      tag: 'Proposal',
+      icon: <SparklesIcon size={24} />,
+      date: '2025-11-25',
+      allowedClients: ['timeless-treatments', 'admin'] // Only Timeless Treatments client and admin can see this
+    },
+    {
       title: 'Restaurant Tycoon 3 Merchandise Strategy',
       description: 'Roblox-Shopify integration strategy for automated merch store with in-game purchasing',
       href: '/restaurant-tycoon-3',
