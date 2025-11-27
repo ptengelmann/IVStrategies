@@ -297,7 +297,6 @@ export default function TimelessTreatmentsStrategy() {
     "Paid advertising budget (Meta/Google) - this is separate",
     "Video production (beyond basic social content)",
     "Professional photography (initial shoot recommended separately ~£300-500)",
-    "Website redesign (current site is functional but basic)",
     "PR campaigns or influencer partnerships",
     "Printed materials or offline marketing"
   ];
