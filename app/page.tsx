@@ -85,6 +85,15 @@ export default function Home() {
       date: '2025-11-03',
       allowedClients: ['au-vodka', 'admin'] // Only AU Vodka client and admin can see this
     },
+    {
+      title: 'Candelabra Concerts Digital Marketing Strategy',
+      description: 'Candlelit concerts marketing strategy - website foundations, social media, and competitive positioning against Fever',
+      href: '/candelabra-concerts',
+      tag: 'Proposal',
+      icon: <SparklesIcon size={24} />,
+      date: '2025-12-04',
+      allowedClients: ['candelabra-concerts', 'admin'] // Only Candelabra Concerts client and admin can see this
+    },
     // Add more projects here as you create them
   ];
 
