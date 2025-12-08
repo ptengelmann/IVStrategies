@@ -2,31 +2,32 @@ import { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 
 // Password-based access - each password unlocks specific projects
+// Passwords are stored in environment variables for security
 const accessCodes = [
   {
     id: "au-vodka",
     name: "AU Vodka",
-    password: "auvodka2024", // Change this!
+    password: process.env.PASSWORD_AU_VODKA,
   },
   {
     id: "restaurant-tycoon",
     name: "Restaurant Tycoon",
-    password: "tycoon2024", // Change this!
+    password: process.env.PASSWORD_RESTAURANT_TYCOON,
   },
   {
     id: "timeless-treatments",
     name: "Timeless Treatments",
-    password: "timeless2024", // Change this!
+    password: process.env.PASSWORD_TIMELESS_TREATMENTS,
   },
   {
     id: "candelabra-concerts",
     name: "Candelabra Concerts",
-    password: "candelabra2024", // Change this!
+    password: process.env.PASSWORD_CANDELABRA_CONCERTS,
   },
   {
     id: "admin",
     name: "IV Strategies Admin",
-    password: "masteradmin2025", // Change this! Admin sees all projects
+    password: process.env.PASSWORD_ADMIN,
   },
 ]
 
