@@ -20,8 +20,8 @@ export const Tabs: React.FC<TabsProps> = ({ tabs, defaultTab }) => {
 
   return (
     <div>
-      {/* Tab Navigation */}
-      <div className="flex gap-2 mt-5 border-b border-white/10 overflow-x-auto pb-0">
+      {/* Tab Navigation - Hidden when printing */}
+      <div className="flex gap-2 mt-5 border-b border-white/10 overflow-x-auto pb-0 print:hidden">
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -40,9 +40,23 @@ export const Tabs: React.FC<TabsProps> = ({ tabs, defaultTab }) => {
         ))}
       </div>
 
-      {/* Tab Content */}
-      <div className="mt-4">
+      {/* Tab Content - Only active tab shown on screen */}
+      <div className="mt-4 print:hidden">
         {activeTabContent}
+      </div>
+
+      {/* Print View - All tabs shown when printing */}
+      <div className="hidden print:block">
+        {tabs.map((tab) => (
+          <div key={tab.id} className="print-section mb-8">
+            <h2 className="text-xl font-bold mb-4 text-[#ff2d9b] border-b-2 border-[#ff2d9b] pb-2">
+              {tab.label}
+            </h2>
+            <div className="mt-4">
+              {tab.content}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

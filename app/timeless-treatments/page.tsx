@@ -7,6 +7,7 @@ import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { Tabs, Tab } from '@/components/Tabs';
 import { Card } from '@/components/Card';
+import { DownloadPDF } from '@/components/DownloadPDF';
 import { SparklesIcon, TrendingUpIcon, GlobeIcon, MapPinIcon } from '@/components/icons';
 
 export default function TimelessTreatmentsStrategy() {
@@ -744,11 +745,14 @@ export default function TimelessTreatmentsStrategy() {
 
   return (
     <div className="max-w-6xl mx-auto px-5 py-5">
-      <Header
-        title="Timeless Treatments Digital Marketing Proposal"
-        tag="IV Strategies Client Proposal 2025"
-        logoPath="/assets/ivlogo.png"
-      />
+      <div className="flex items-center justify-between mb-4">
+        <Header
+          title="Timeless Treatments Digital Marketing Proposal"
+          tag="IV Strategies Client Proposal 2025"
+          logoPath="/assets/ivlogo.png"
+        />
+        <DownloadPDF />
+      </div>
 
       <Hero
         kicker="Timeless Treatments - Pre-Launch Digital Strategy"
@@ -777,7 +781,7 @@ export default function TimelessTreatmentsStrategy() {
         </div>
       </Card>
 
-      <div className="text-center mt-6 text-[#8a8a8a] text-xs">
+      <div className="text-center mt-6 text-[#8a8a8a] text-xs print:mt-10">
         Timeless Treatments Digital Marketing Proposal | Prepared by IV Strategies | November 2025 | iv-creative.co.uk
       </div>
     </div>

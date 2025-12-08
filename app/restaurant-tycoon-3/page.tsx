@@ -7,6 +7,7 @@ import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { Tabs, Tab } from '@/components/Tabs';
 import { Card } from '@/components/Card';
+import { DownloadPDF } from '@/components/DownloadPDF';
 import { SparklesIcon, GlobeIcon, TrendingUpIcon, GiftIcon, DiscordIcon, XIcon, InstagramIcon, YouTubeIcon, TikTokIcon, PackageIcon, ShoppingBagIcon, PrinterIcon } from '@/components/icons';
 
 export default function RestaurantTycoon3Strategy() {
@@ -611,11 +612,14 @@ export default function RestaurantTycoon3Strategy() {
 
   return (
     <div className="max-w-6xl mx-auto px-5 py-5">
-      <Header
-        title="Restaurant Tycoon 3 Merchandise Strategy"
-        tag="Roblox E-Commerce Integration Proposal"
-        logoPath="/assets/ivlogo.png"
-      />
+      <div className="flex items-center justify-between mb-4">
+        <Header
+          title="Restaurant Tycoon 3 Merchandise Strategy"
+          tag="Roblox E-Commerce Integration Proposal"
+          logoPath="/assets/ivlogo.png"
+        />
+        <DownloadPDF />
+      </div>
 
       <Hero
         kicker="Restaurant Tycoon 3 - Roblox to Reality"

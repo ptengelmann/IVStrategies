@@ -7,6 +7,7 @@ import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { Tabs, Tab } from '@/components/Tabs';
 import { Card } from '@/components/Card';
+import { DownloadPDF } from '@/components/DownloadPDF';
 import { SparklesIcon, PlaneIcon } from '@/components/icons';
 
 export default function AUVodkaStrategy() {
@@ -365,11 +366,14 @@ export default function AUVodkaStrategy() {
 
   return (
     <div className="max-w-6xl mx-auto px-5 py-5">
-      <Header
-        title="AU Vodka Personalization Strategy"
-        tag="IV Creative Client Proposal 2025"
-        logoPath="/assets/ivlogo.png"
-      />
+      <div className="flex items-center justify-between mb-4">
+        <Header
+          title="AU Vodka Personalization Strategy"
+          tag="IV Creative Client Proposal 2025"
+          logoPath="/assets/ivlogo.png"
+        />
+        <DownloadPDF />
+      </div>
 
       <Hero
         kicker="AU Vodka - Global Travel Retail Opportunity"
