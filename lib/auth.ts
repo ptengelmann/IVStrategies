@@ -1,31 +1,32 @@
 import { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 
-// Client credentials - you can change these passwords before presenting
-const clients = [
+// Password-based access - each password unlocks specific projects
+const accessCodes = [
   {
     id: "au-vodka",
     name: "AU Vodka",
-    email: "client@auvodka.com",
     password: "auvodka2024", // Change this!
   },
   {
     id: "restaurant-tycoon",
     name: "Restaurant Tycoon",
-    email: "client@restauranttycoon.com",
     password: "tycoon2024", // Change this!
   },
   {
     id: "timeless-treatments",
     name: "Timeless Treatments",
-    email: "client@timeless-treatments.co.uk",
     password: "timeless2024", // Change this!
+  },
+  {
+    id: "candelabra-concerts",
+    name: "Candelabra Concerts",
+    password: "candelabra2024", // Change this!
   },
   {
     id: "admin",
     name: "IV Strategies Admin",
-    email: "admin@ivstrategies.com",
-    password: "admin2024", // Change this! Admin sees all projects
+    password: "masteradmin2025", // Change this! Admin sees all projects
   },
 ]
 
@@ -34,23 +35,23 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
+        if (!credentials?.password) {
           return null
         }
 
-        const client = clients.find(
-          (c) => c.email === credentials.email && c.password === credentials.password
+        // Find the access code that matches the password
+        const access = accessCodes.find(
+          (a) => a.password === credentials.password
         )
 
-        if (client) {
+        if (access) {
           return {
-            id: client.id,
-            name: client.name,
-            email: client.email,
+            id: access.id,
+            name: access.name,
+            email: `${access.id}@ivstrategies.com`, // Dummy email for NextAuth
           }
         }
 
