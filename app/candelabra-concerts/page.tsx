@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { Header } from '@/components/Header';
-import { Hero } from '@/components/Hero';
 import { Tabs, Tab } from '@/components/Tabs';
 import { Card } from '@/components/Card';
 import { DownloadPDF } from '@/components/DownloadPDF';
@@ -27,8 +26,8 @@ export default function CandelabraConcertsStrategy() {
 
   if (status === 'loading') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center">
-        <div className="text-white text-lg">Loading...</div>
+      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
+        <div className="text-[#666]">Loading...</div>
       </div>
     );
   }
@@ -672,21 +671,25 @@ export default function CandelabraConcertsStrategy() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-5 py-5">
-      <div className="flex items-center justify-between mb-4">
-        <Header
-          title="Candelabra Concerts Digital Marketing Strategy"
-          tag="IV Strategies Client Proposal 2025"
-          logoPath="/assets/ivlogo.png"
-        />
+    <div className="max-w-4xl mx-auto px-6 py-6">
+      <Header
+        title="Candelabra Concerts"
+        tag="Digital Marketing Strategy"
+        logoPath="/assets/ivlogo.png"
+      />
+
+      <div className="flex items-center justify-between py-10 border-b border-[#222]">
+        <div>
+          <p className="text-xs text-[#ff2d9b] uppercase tracking-wider mb-2">Strategic Assessment</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-white mb-3">
+            Marketing Strategy to Increase Ticket Sales
+          </h1>
+          <p className="text-[#666] text-sm max-w-xl">
+            Addressing website and trust issues, then deploying targeted marketing to fill every seat.
+          </p>
+        </div>
         <DownloadPDF />
       </div>
-
-      <Hero
-        kicker="Candelabra Concerts - Strategic Assessment"
-        title="Marketing Strategy to Increase Ticket Sales"
-        subtitle="Addressing critical website and trust issues, then deploying targeted marketing to fill every seat at every show."
-      />
 
       <Tabs tabs={tabs} defaultTab="overview" />
 

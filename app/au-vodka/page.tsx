@@ -4,7 +4,6 @@ import React, { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { Header } from '@/components/Header';
-import { Hero } from '@/components/Hero';
 import { Tabs, Tab } from '@/components/Tabs';
 import { Card } from '@/components/Card';
 import { DownloadPDF } from '@/components/DownloadPDF';
@@ -30,8 +29,8 @@ export default function AUVodkaStrategy() {
   // Show loading while checking authentication
   if (status === 'loading') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center">
-        <div className="text-white text-lg">Loading...</div>
+      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
+        <div className="text-[#666]">Loading...</div>
       </div>
     );
   }
@@ -365,21 +364,25 @@ export default function AUVodkaStrategy() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-5 py-5">
-      <div className="flex items-center justify-between mb-4">
-        <Header
-          title="AU Vodka Personalization Strategy"
-          tag="IV Creative Client Proposal 2025"
-          logoPath="/assets/ivlogo.png"
-        />
+    <div className="max-w-4xl mx-auto px-6 py-6">
+      <Header
+        title="AU Vodka"
+        tag="Personalisation Strategy"
+        logoPath="/assets/ivlogo.png"
+      />
+
+      <div className="flex items-center justify-between py-10 border-b border-[#222]">
+        <div>
+          <p className="text-xs text-[#ff2d9b] uppercase tracking-wider mb-2">Global Travel Retail</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-white mb-3">
+            Personalized Gold Bottles for International Travelers
+          </h1>
+          <p className="text-[#666] text-sm max-w-xl">
+            Leveraging personalization across airport duty-free in key markets worldwide.
+          </p>
+        </div>
         <DownloadPDF />
       </div>
-
-      <Hero
-        kicker="AU Vodka - Global Travel Retail Opportunity"
-        title="Personalized Gold Bottles for International Travelers"
-        subtitle="How AU Vodka can leverage personalization across airport duty-free in key markets - UK, USA, Europe, Middle East, and Australia - transforming iconic gold bottles into personalized travel souvenirs with country flags, destination names, and custom engravings."
-      />
 
       <Tabs tabs={tabs} defaultTab="markets" />
 

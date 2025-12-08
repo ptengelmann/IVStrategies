@@ -21,27 +21,29 @@ export const Tabs: React.FC<TabsProps> = ({ tabs, defaultTab }) => {
   return (
     <div>
       {/* Tab Navigation - Hidden when printing */}
-      <div className="flex gap-2 mt-5 border-b border-white/10 overflow-x-auto pb-0 print:hidden">
+      <div className="flex gap-1 border-b border-[#222] overflow-x-auto print:hidden">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={`
-              px-4 py-2.5 rounded-t-lg text-[13px] font-semibold whitespace-nowrap
-              transition-colors border-none cursor-pointer
+              px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors relative
               ${activeTab === tab.id
-                ? 'bg-[#ff2d9b] text-white'
-                : 'bg-transparent text-[#8a8a8a] hover:text-white'
+                ? 'text-white'
+                : 'text-[#666] hover:text-[#999]'
               }
             `}
           >
             {tab.label}
+            {activeTab === tab.id && (
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#ff2d9b]" />
+            )}
           </button>
         ))}
       </div>
 
       {/* Tab Content - Only active tab shown on screen */}
-      <div className="mt-4 print:hidden">
+      <div className="py-6 print:hidden">
         {activeTabContent}
       </div>
 

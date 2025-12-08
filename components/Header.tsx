@@ -21,36 +21,36 @@ export const Header: React.FC<HeaderProps> = ({ title, tag, logoPath }) => {
   };
 
   return (
-    <div className="flex justify-between items-center py-4 border-b border-white/10">
-      <div className="flex items-center gap-2.5">
+    <div className="flex justify-between items-center py-5 border-b border-[#222]">
+      <div className="flex items-center gap-3">
         {logoPath && (
           <Image
             src={logoPath}
             alt="Logo"
-            width={40}
-            height={40}
+            width={36}
+            height={36}
             className="object-contain"
           />
         )}
-        <span className="font-bold text-lg">{title}</span>
+        <div className="flex flex-col">
+          <span className="font-semibold text-base text-white">{title}</span>
+          {tag && (
+            <span className="text-xs text-[#666]">{tag}</span>
+          )}
+        </div>
       </div>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-4">
         {session?.user && (
-          <div className="flex items-center gap-3">
-            <span className="text-sm text-gray-400 hidden md:block">
+          <div className="flex items-center gap-4">
+            <span className="text-sm text-[#666] hidden md:block">
               {session.user.name}
             </span>
             <button
               onClick={handleLogout}
-              className="bg-white/5 hover:bg-white/10 text-white px-4 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 border border-white/10 hover:border-white/20"
+              className="text-[#666] hover:text-white text-sm transition-colors"
             >
-              Logout
+              Log out
             </button>
-          </div>
-        )}
-        {tag && (
-          <div className="bg-[#ff2d9b]/10 text-[#ff2d9b] px-3 py-1.5 rounded-2xl text-xs font-semibold">
-            {tag}
           </div>
         )}
       </div>

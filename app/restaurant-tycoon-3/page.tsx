@@ -4,7 +4,6 @@ import React, { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { Header } from '@/components/Header';
-import { Hero } from '@/components/Hero';
 import { Tabs, Tab } from '@/components/Tabs';
 import { Card } from '@/components/Card';
 import { DownloadPDF } from '@/components/DownloadPDF';
@@ -27,11 +26,10 @@ export default function RestaurantTycoon3Strategy() {
     }
   }, [status, session, router]);
 
-  // Show loading while checking authentication
   if (status === 'loading') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center">
-        <div className="text-white text-lg">Loading...</div>
+      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
+        <div className="text-[#666]">Loading...</div>
       </div>
     );
   }
@@ -611,21 +609,25 @@ export default function RestaurantTycoon3Strategy() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-5 py-5">
-      <div className="flex items-center justify-between mb-4">
-        <Header
-          title="Restaurant Tycoon 3 Merchandise Strategy"
-          tag="Roblox E-Commerce Integration Proposal"
-          logoPath="/assets/ivlogo.png"
-        />
+    <div className="max-w-4xl mx-auto px-6 py-6">
+      <Header
+        title="Restaurant Tycoon 3"
+        tag="Merchandise Strategy"
+        logoPath="/assets/ivlogo.png"
+      />
+
+      <div className="flex items-center justify-between py-10 border-b border-[#222]">
+        <div>
+          <p className="text-xs text-[#ff2d9b] uppercase tracking-wider mb-2">Roblox to Reality</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-white mb-3">
+            Automated Merchandise Store with In-Game Integration
+          </h1>
+          <p className="text-[#666] text-sm max-w-xl">
+            Shopify-powered merchandise with Roblox Commerce API integration for in-game purchases.
+          </p>
+        </div>
         <DownloadPDF />
       </div>
-
-      <Hero
-        kicker="Restaurant Tycoon 3 - Roblox to Reality"
-        title="Automated Merchandise Store with In-Game Integration"
-        subtitle="Comprehensive strategy for launching a Shopify-powered merchandise store for Restaurant Tycoon 3, leveraging Roblox's official Commerce API integration (launched May 2025) to enable seamless in-game purchases of personalised physical products delivered directly to players worldwide."
-      />
 
       <Tabs tabs={tabs} defaultTab="overview" />
 

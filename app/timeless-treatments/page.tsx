@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { Header } from '@/components/Header';
-import { Hero } from '@/components/Hero';
 import { Tabs, Tab } from '@/components/Tabs';
 import { Card } from '@/components/Card';
 import { DownloadPDF } from '@/components/DownloadPDF';
@@ -28,8 +27,8 @@ export default function TimelessTreatmentsStrategy() {
 
   if (status === 'loading') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center">
-        <div className="text-white text-lg">Loading...</div>
+      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
+        <div className="text-[#666]">Loading...</div>
       </div>
     );
   }
@@ -744,21 +743,25 @@ export default function TimelessTreatmentsStrategy() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-5 py-5">
-      <div className="flex items-center justify-between mb-4">
-        <Header
-          title="Timeless Treatments Digital Marketing Proposal"
-          tag="IV Strategies Client Proposal 2025"
-          logoPath="/assets/ivlogo.png"
-        />
+    <div className="max-w-4xl mx-auto px-6 py-6">
+      <Header
+        title="Timeless Treatments"
+        tag="Digital Marketing Proposal"
+        logoPath="/assets/ivlogo.png"
+      />
+
+      <div className="flex items-center justify-between py-10 border-b border-[#222]">
+        <div>
+          <p className="text-xs text-[#ff2d9b] uppercase tracking-wider mb-2">Pre-Launch Strategy</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-white mb-3">
+            SEO & Social Media Strategy for Clinic Growth
+          </h1>
+          <p className="text-[#666] text-sm max-w-xl">
+            A realistic, phased digital marketing strategy to build buzz pre-launch and scale to £30k/month revenue.
+          </p>
+        </div>
         <DownloadPDF />
       </div>
-
-      <Hero
-        kicker="Timeless Treatments - Pre-Launch Digital Strategy"
-        title="SEO & Social Media Strategy for Clinic Growth"
-        subtitle="A realistic, phased digital marketing strategy to build buzz pre-launch and scale to £30k/month revenue. Foundation package at £3,000/month with clear growth pathway and honest projections."
-      />
 
       <Tabs tabs={tabs} defaultTab="overview" />
 
@@ -781,8 +784,8 @@ export default function TimelessTreatmentsStrategy() {
         </div>
       </Card>
 
-      <div className="text-center mt-6 text-[#8a8a8a] text-xs print:mt-10">
-        Timeless Treatments Digital Marketing Proposal | Prepared by IV Strategies | November 2025 | iv-creative.co.uk
+      <div className="text-center py-8 text-xs text-[#444]">
+        IV Strategies · November 2025
       </div>
     </div>
   );
