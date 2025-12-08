@@ -18,6 +18,47 @@ interface Project {
   allowedClients: string[];
 }
 
+const projects: Project[] = [
+  {
+    title: 'Timeless Treatments Digital Marketing Strategy',
+    description: 'SEO & Social Media strategy for pre-launch buzz and growth to £30k/month revenue',
+    href: '/timeless-treatments',
+    tag: 'Proposal',
+    date: 'Nov 2025',
+    client: 'Timeless Treatments',
+    allowedClients: ['timeless-treatments', 'admin']
+  },
+  {
+    title: 'Restaurant Tycoon 3 Merchandise Strategy',
+    description: 'Roblox-Shopify integration strategy for automated merch store with in-game purchasing',
+    href: '/restaurant-tycoon-3',
+    tag: 'Merchandise',
+    date: 'Nov 2025',
+    client: 'Restaurant Tycoon',
+    allowedClients: ['restaurant-tycoon', 'admin']
+  },
+  {
+    title: 'AU Vodka Personalisation Strategy',
+    description: 'Global travel retail opportunity with personalised gold bottles for international travellers',
+    href: '/au-vodka',
+    tag: 'Proposal',
+    date: 'Nov 2025',
+    client: 'AU Vodka',
+    allowedClients: ['au-vodka', 'admin']
+  },
+  {
+    title: 'Candelabra Concerts Digital Marketing Strategy',
+    description: 'Candlelit concerts marketing strategy - website foundations, social media, and competitive positioning',
+    href: '/candelabra-concerts',
+    tag: 'Proposal',
+    date: 'Dec 2025',
+    client: 'Candelabra Concerts',
+    allowedClients: ['candelabra-concerts', 'admin']
+  },
+];
+
+const tags: TagType[] = ['All', 'Proposal', 'Merchandise', 'Internal', 'Briefing'];
+
 export default function Home() {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -25,70 +66,15 @@ export default function Home() {
   const [activeFilter, setActiveFilter] = useState<TagType>('All');
   const [clientFilter, setClientFilter] = useState<string>('All');
 
-  useEffect(() => {
-    if (status === 'unauthenticated') {
-      router.push('/login');
-    }
-  }, [status, router]);
-
-  if (status === 'loading') {
-    return (
-      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
-        <div className="text-[#666]">Loading...</div>
-      </div>
-    );
-  }
-
-  if (!session) {
-    return null;
-  }
-
-  const clientId = session.user?.id || '';
+  const clientId = session?.user?.id || '';
   const isAdmin = clientId === 'admin';
 
-  const projects: Project[] = [
-    {
-      title: 'Timeless Treatments Digital Marketing Strategy',
-      description: 'SEO & Social Media strategy for pre-launch buzz and growth to £30k/month revenue',
-      href: '/timeless-treatments',
-      tag: 'Proposal',
-      date: 'Nov 2025',
-      client: 'Timeless Treatments',
-      allowedClients: ['timeless-treatments', 'admin']
-    },
-    {
-      title: 'Restaurant Tycoon 3 Merchandise Strategy',
-      description: 'Roblox-Shopify integration strategy for automated merch store with in-game purchasing',
-      href: '/restaurant-tycoon-3',
-      tag: 'Merchandise',
-      date: 'Nov 2025',
-      client: 'Restaurant Tycoon',
-      allowedClients: ['restaurant-tycoon', 'admin']
-    },
-    {
-      title: 'AU Vodka Personalisation Strategy',
-      description: 'Global travel retail opportunity with personalised gold bottles for international travellers',
-      href: '/au-vodka',
-      tag: 'Proposal',
-      date: 'Nov 2025',
-      client: 'AU Vodka',
-      allowedClients: ['au-vodka', 'admin']
-    },
-    {
-      title: 'Candelabra Concerts Digital Marketing Strategy',
-      description: 'Candlelit concerts marketing strategy - website foundations, social media, and competitive positioning',
-      href: '/candelabra-concerts',
-      tag: 'Proposal',
-      date: 'Dec 2025',
-      client: 'Candelabra Concerts',
-      allowedClients: ['candelabra-concerts', 'admin']
-    },
-  ];
-
   // Get projects user can see
-  const clientProjects = projects.filter(project =>
-    project.allowedClients.includes(clientId)
-  );
+  const clientProjects = useMemo(() => {
+    return projects.filter(project =>
+      project.allowedClients.includes(clientId)
+    );
+  }, [clientId]);
 
   // Get unique clients for admin filter
   const uniqueClients = useMemo(() => {
@@ -115,7 +101,23 @@ export default function Home() {
     });
   }, [clientProjects, searchQuery, activeFilter, clientFilter]);
 
-  const tags: TagType[] = ['All', 'Proposal', 'Merchandise', 'Internal', 'Briefing'];
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push('/login');
+    }
+  }, [status, router]);
+
+  if (status === 'loading') {
+    return (
+      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
+        <div className="text-[#666]">Loading...</div>
+      </div>
+    );
+  }
+
+  if (!session) {
+    return null;
+  }
 
   const getTagStyle = (tag: TagType) => {
     switch(tag) {
