@@ -1,209 +1,107 @@
-# Research & Strategy App
+# IV Strategies Research Hub
 
-A modern Next.js application for creating beautiful, interactive research and strategy presentations.
+A secure, client-facing platform for delivering strategic proposals, research documents, and merchandise strategies to stakeholders.
 
-## Features
+## Product Overview
 
-- ✨ Clean, professional dark theme design
-- 📱 Fully responsive layout
-- 🎨 Reusable component library
-- 🔄 Interactive tabbed interfaces
-- 🎯 Perfect for client proposals and research presentations
+The Research Hub was developed to address a core business need: providing clients with secure, branded access to their strategic deliverables while maintaining strict access control between different client accounts.
 
-## Getting Started
+### Problem Statement
 
-### Install Dependencies
+The agency required a centralised platform where:
+- Clients could access only their own proposals and research
+- Admin users could view and manage all client materials
+- Documents could be presented professionally with consistent branding
+- Stakeholders could download materials as PDFs for offline review
 
-```bash
-npm install
-```
+### Solution
 
-### Run Development Server
+A role-based access portal that authenticates users via password and dynamically displays only the projects they are authorised to view.
 
-```bash
-npm run dev
-```
+## Key Features
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+### Access Control
+- Password-based authentication with role-specific access
+- Each password unlocks a specific client view
+- Admin credentials provide visibility across all client materials
+- Unauthorised access attempts redirect to login
 
-### Build for Production
+### Project Management
+- Searchable project directory with filtering by type and client
+- Tag-based categorisation (Proposal, Merchandise, Internal, Briefing)
+- Admin-only client filter for cross-account visibility
+- Results count for active filters
 
-```bash
-npm run build
-npm start
-```
+### Document Presentation
+- Consistent visual design across all proposals
+- Tabbed navigation for multi-section documents
+- Print-optimised layouts for PDF export
+- Responsive design for desktop and mobile access
+
+### Scalability Considerations
+- Search functionality supports growing project volumes
+- Filter architecture designed for hundreds of entries
+- Modular page structure for rapid content addition
+
+## User Roles
+
+| Role | Access Level | Use Case |
+|------|-------------|----------|
+| Client | Single project view | External stakeholders reviewing their specific proposals |
+| Admin | All projects | Internal team managing and presenting materials |
 
 ## Project Structure
 
 ```
-research-app/
-├── app/
-│   ├── au-vodka/          # Example research page
-│   │   └── page.tsx
-│   ├── page.tsx           # Home page
-│   ├── layout.tsx         # Root layout
-│   └── globals.css        # Global styles
-├── components/
-│   ├── Card.tsx           # Reusable card component
-│   ├── Header.tsx         # Page header
-│   ├── Hero.tsx           # Hero section
-│   ├── Tabs.tsx           # Tabbed interface
-│   └── icons.tsx          # Icon components
-├── public/
-│   └── assets/            # Images and static files
-├── TEMPLATE.md            # Template for new pages
-└── README.md
+/app
+  /login              Authentication page
+  /[project-name]     Individual proposal pages
+  /api/auth           NextAuth authentication endpoints
+  /api/briefing       Client briefing form submissions
+/components           Reusable UI components
+/lib                  Authentication configuration
 ```
 
-## Creating a New Research Page
+## Adding New Projects
 
-1. **Create a new folder** in `/app/` with your project name:
-   ```bash
-   mkdir app/your-project
-   ```
+1. Create a new directory under `/app/` with the project slug
+2. Build the page using existing component patterns (Card, Tabs, Header)
+3. Add the project entry to the projects array in `/app/page.tsx`
+4. Assign appropriate `allowedClients` for access control
+5. Add credentials to `/lib/auth.ts` if creating a new client
 
-2. **Create `page.tsx`** in that folder and use the template from `TEMPLATE.md`
+## Technical Stack
 
-3. **Add your page to the home page** in `/app/page.tsx`:
-   ```tsx
-   {
-     title: 'Your Project Title',
-     description: 'Brief description',
-     href: '/your-project',
-     tag: 'Your Tag',
-     icon: <GlobeIcon size={24} />
-   }
-   ```
+- Next.js 16 with App Router
+- TypeScript
+- NextAuth.js for authentication
+- Tailwind CSS
+- Vercel deployment
 
-## Components
+## Configuration
 
-### Header
-Displays the page title and optional tag/badge.
+### Environment Variables
 
-```tsx
-<Header
-  title="Your Title"
-  tag="Optional Tag"
-  logoPath="/assets/logo.png" // optional
-/>
+```
+NEXTAUTH_SECRET=your-secret-key
+NEXTAUTH_URL=https://your-domain.com
 ```
 
-### Hero
-Creates an eye-catching hero section with kicker, title, and subtitle.
+### Authentication
 
-```tsx
-<Hero
-  kicker="Small text above"
-  title="Main Title"
-  subtitle="Supporting description"
-/>
-```
+Client credentials are configured in `/lib/auth.ts`. Each entry maps a password to a client ID that determines project visibility.
 
-### Card
-Versatile card component with multiple style variants.
+## Deployment
 
-```tsx
-<Card variant="default">Content</Card>
-<Card variant="highlight">Pink highlight</Card>
-<Card variant="gradient">Gradient style</Card>
-<Card variant="success">Green success</Card>
-```
+The application deploys automatically to Vercel on push to the main branch. Production builds are validated before deployment.
 
-### Tabs
-Interactive tabbed interface for organizing content.
+## Roadmap Considerations
 
-```tsx
-const tabs = [
-  {
-    id: 'tab1',
-    label: 'Tab 1',
-    content: <div>Content 1</div>
-  },
-  {
-    id: 'tab2',
-    label: 'Tab 2',
-    content: <div>Content 2</div>
-  }
-];
+- Sorting options (date, alphabetical, client)
+- Analytics dashboard for document engagement
+- Client self-service briefing submissions
+- Version history for updated proposals
 
-<Tabs tabs={tabs} defaultTab="tab1" />
-```
+---
 
-### Icons
-Collection of SVG icons:
-- `GlobeIcon`
-- `PlaneIcon`
-- `GiftIcon`
-- `MapPinIcon`
-- `SparklesIcon`
-- `TrendingUpIcon`
-
-```tsx
-<SparklesIcon size={24} className="text-[#ff2d9b]" />
-```
-
-## Design System
-
-### Colors
-- **Primary Pink**: `#ff2d9b`
-- **Success Green**: `#2dffb5`
-- **Background**: `#0f0f0f`
-- **Foreground**: `#e0e0e0`
-- **Muted**: `#8a8a8a`
-
-### Typography
-- Font Family: Inter (via Google Fonts)
-- Headings: Bold, gradient effects for main titles
-- Body: Regular weight, comfortable line height
-
-### Spacing
-Consistent spacing using Tailwind's spacing scale (multiples of 4px).
-
-## Example Pages
-
-### AU Vodka Strategy
-A complete example showing:
-- Market analysis with flags and regions
-- Personalization concepts in grid layout
-- Airport strategy with lists and highlights
-- "Why it works" section with benefits
-- Multiple tab navigation
-
-Visit `/au-vodka` to see it in action.
-
-## Tips for Great Research Pages
-
-1. **Keep it scannable**: Use clear headings, short paragraphs, and bullet points
-2. **Use visual hierarchy**: Leverage cards, borders, and color to guide the eye
-3. **Add icons**: They add visual interest and help with quick scanning
-4. **Organize with tabs**: Break complex topics into digestible sections
-5. **Mobile-first**: Always test on mobile devices
-6. **Data visualization**: Consider adding charts or graphics for data-heavy content
-
-## Customization
-
-### Changing the Color Scheme
-Edit colors in:
-- `/app/globals.css` (CSS variables)
-- `/components/*.tsx` (Tailwind classes)
-
-### Adding Fonts
-Edit `/app/layout.tsx` to import different Google Fonts.
-
-### Custom Components
-Create new components in `/components/` and import them in your pages.
-
-## Tech Stack
-
-- **Framework**: Next.js 15 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Fonts**: Google Fonts (Inter)
-
-## License
-
-MIT
-
-## Support
-
-For issues or questions, refer to `TEMPLATE.md` for page creation guidance.
+IV Strategies | Internal Documentation
